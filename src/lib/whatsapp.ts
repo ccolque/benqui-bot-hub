@@ -17,29 +17,43 @@ async function callGraph(tenant: Tenant, body: Record<string, unknown>): Promise
 }
 
 /**
- * WhatsApp entrega los celulares de Argentina como 549... y los de México como 521...,
- * pero la Cloud API espera el número sin ese dígito extra al enviar (sino da error 131030).
+ * Variantes del destinatario para cuando Meta responde 131030 ("not in allowed list").
+ * Pasa con los números de prueba: la lista de destinatarios guarda el número tal como
+ * Meta lo interpretó (ej. Argentina: 54 387 15 4153317) y no el wa_id (549 387 4153317).
+ * En producción se envía al wa_id directamente y no hace falta ninguna variante.
  */
-export function toRecipient(waId: string): string {
-  if (/^549\d{10}$/.test(waId)) return "54" + waId.slice(3);
-  if (/^521\d{10}$/.test(waId)) return "52" + waId.slice(3);
-  return waId;
+export function recipientVariants(waId: string): string[] {
+  const ar = /^549(\d{10})$/.exec(waId);
+  if (ar) {
+    const national = ar[1];
+    const withMobilePrefix = [2, 3, 4].map(
+      (areaLen) => `54${national.slice(0, areaLen)}15${national.slice(areaLen)}`,
+    );
+    return ["54" + national, ...withMobilePrefix];
+  }
+  const mx = /^521(\d{10})$/.exec(waId);
+  if (mx) return ["52" + mx[1]];
+  return [];
+}
+
+async function sendTo(tenant: Tenant, waId: string, message: Record<string, unknown>) {
+  const candidates = [waId, ...recipientVariants(waId)];
+  for (const [i, to] of candidates.entries()) {
+    try {
+      return await callGraph(tenant, { recipient_type: "individual", to, ...message });
+    } catch (err) {
+      const notAllowed = String(err).includes("131030");
+      if (!notAllowed || i === candidates.length - 1) throw err;
+    }
+  }
 }
 
 export function sendReply(tenant: Tenant, waId: string, reply: BotReply): Promise<void> {
-  const to = toRecipient(waId);
   switch (reply.type) {
     case "text":
-      return callGraph(tenant, {
-        recipient_type: "individual",
-        to,
-        type: "text",
-        text: { body: reply.text },
-      });
+      return sendTo(tenant, waId, { type: "text", text: { body: reply.text } });
     case "buttons":
-      return callGraph(tenant, {
-        recipient_type: "individual",
-        to,
+      return sendTo(tenant, waId, {
         type: "interactive",
         interactive: {
           type: "button",
