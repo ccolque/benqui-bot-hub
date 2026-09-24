@@ -16,7 +16,18 @@ async function callGraph(tenant: Tenant, body: Record<string, unknown>): Promise
   }
 }
 
-export function sendReply(tenant: Tenant, to: string, reply: BotReply): Promise<void> {
+/**
+ * WhatsApp entrega los celulares de Argentina como 549... y los de México como 521...,
+ * pero la Cloud API espera el número sin ese dígito extra al enviar (sino da error 131030).
+ */
+export function toRecipient(waId: string): string {
+  if (/^549\d{10}$/.test(waId)) return "54" + waId.slice(3);
+  if (/^521\d{10}$/.test(waId)) return "52" + waId.slice(3);
+  return waId;
+}
+
+export function sendReply(tenant: Tenant, waId: string, reply: BotReply): Promise<void> {
+  const to = toRecipient(waId);
   switch (reply.type) {
     case "text":
       return callGraph(tenant, {
