@@ -1,5 +1,6 @@
 import type { BotReply, Tenant } from "../tenants/types.js";
 import { graphApiVersion } from "./env.js";
+import { clip } from "./text.js";
 
 async function callGraph(tenant: Tenant, body: Record<string, unknown>): Promise<void> {
   const url = `https://graph.facebook.com/${graphApiVersion()}/${tenant.phoneNumberId}/messages`;
@@ -61,11 +62,36 @@ export function sendReply(tenant: Tenant, waId: string, reply: BotReply): Promis
           action: {
             buttons: reply.buttons.slice(0, 3).map((b) => ({
               type: "reply",
-              reply: { id: b.id, title: b.title.slice(0, 20) },
+              reply: { id: b.id, title: clip(b.title, 20) },
             })),
           },
         },
       });
+    case "list": {
+      let remaining = 10; // WhatsApp admite hasta 10 filas en total
+      const sections = reply.sections
+        .map((s) => {
+          const rows = s.rows.slice(0, remaining);
+          remaining -= rows.length;
+          return {
+            ...(s.title ? { title: clip(s.title, 24) } : {}),
+            rows: rows.map((r) => ({
+              id: r.id,
+              title: clip(r.title, 24),
+              ...(r.description ? { description: clip(r.description, 72) } : {}),
+            })),
+          };
+        })
+        .filter((s) => s.rows.length > 0);
+      return sendTo(tenant, waId, {
+        type: "interactive",
+        interactive: {
+          type: "list",
+          body: { text: reply.text },
+          action: { button: clip(reply.button, 20), sections },
+        },
+      });
+    }
   }
 }
 

@@ -1,0 +1,53 @@
+{
+  "info": {
+    "nombre": "Centro Médico Los Cerros",
+    "direccion": "Av. Belgrano 1500, Salta Capital",
+    "horarios": [
+      "Lunes a viernes: 8:00 a 20:00",
+      "Sábados: 8:00 a 12:00"
+    ],
+    "telefono": "387 422-0000",
+    "mapsUrl": "https://maps.google.com/?q=Av.+Belgrano+1500,+Salta"
+  },
+  "especialidades": [
+    { "id": "clinica", "nombre": "Clínica médica" },
+    { "id": "pediatria", "nombre": "Pediatría" },
+    { "id": "cardiologia", "nombre": "Cardiología" },
+    { "id": "dermatologia", "nombre": "Dermatología" },
+    { "id": "ginecologia", "nombre": "Ginecología" },
+    { "id": "traumatologia", "nombre": "Traumatología" }
+  ],
+  "medicos": [
+    {
+      "id": "M01", "nombre": "Dra. Laura Méndez", "especialidad": "clinica", "duracionMin": 20,
+      "agenda": [{ "dias": [1, 2, 3, 4, 5], "desde": "08:00", "hasta": "12:00" }]
+    },
+    {
+      "id": "M02", "nombre": "Dr. Pablo Aguirre", "especialidad": "clinica", "duracionMin": 20,
+      "agenda": [{ "dias": [1, 3, 5], "desde": "16:00", "hasta": "20:00" }]
+    },
+    {
+      "id": "M03", "nombre": "Dra. Sofía Ruiz", "especialidad": "pediatria", "duracionMin": 30,
+      "agenda": [
+        { "dias": [1, 2, 3, 4, 5], "desde": "09:00", "hasta": "13:00" },
+        { "dias": [6], "desde": "08:00", "hasta": "12:00" }
+      ]
+    },
+    {
+      "id": "M04", "nombre": "Dr. Martín Cáceres", "especialidad": "cardiologia", "duracionMin": 30,
+      "agenda": [{ "dias": [2, 4], "desde": "15:00", "hasta": "19:00" }]
+    },
+    {
+      "id": "M05", "nombre": "Dra. Valeria Torres", "especialidad": "dermatologia", "duracionMin": 20,
+      "agenda": [{ "dias": [1, 3], "desde": "10:00", "hasta": "14:00" }]
+    },
+    {
+      "id": "M06", "nombre": "Dra. Carolina Díaz", "especialidad": "ginecologia", "duracionMin": 30,
+      "agenda": [{ "dias": [2, 4, 5], "desde": "09:00", "hasta": "13:00" }]
+    },
+    {
+      "id": "M07", "nombre": "Dr. Javier Rojas", "especialidad": "traumatologia", "duracionMin": 20,
+      "agenda": [{ "dias": [1, 2, 3, 4, 5], "desde": "16:00", "hasta": "19:00" }]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "info": {
+    "nombre": "La Casona Salteña",
+    "direccion": "Balcarce 820, Salta Capital",
+    "horarios": [
+      "Martes a domingo: 12:00 a 15:30 y 20:00 a 00:30",
+      "Lunes: cerrado"
+    ],
+    "telefono": "387 431-0000",
+    "mapsUrl": "https://maps.google.com/?q=Balcarce+820,+Salta",
+    "pedidos": {
+      "costoEnvio": 1500,
+      "demoraDelivery": "40 a 50 minutos",
+      "demoraRetiro": "20 a 25 minutos"
+    }
+  },
+  "categorias": [
+    { "id": "empanadas", "nombre": "Empanadas" },
+    { "id": "principales", "nombre": "Platos principales" },
+    { "id": "pizzas", "nombre": "Pizzas" },
+    { "id": "bebidas", "nombre": "Bebidas" },
+    { "id": "postres", "nombre": "Postres" }
+  ],
+  "productos": [
+    { "id": "R001", "nombre": "Empanada salteña de carne", "categoria": "empanadas", "precio": 1200, "descripcion": "Cortada a cuchillo, al horno de barro" },
+    { "id": "R002", "nombre": "Empanada de pollo", "categoria": "empanadas", "precio": 1200 },
+    { "id": "R003", "nombre": "Empanada de queso y cebolla", "categoria": "empanadas", "precio": 1200 },
+    { "id": "R004", "nombre": "Docena de empanadas", "categoria": "empanadas", "precio": 13000, "descripcion": "Surtidas a elección", "tags": ["empanada"] },
+    { "id": "R005", "nombre": "Locro norteño", "categoria": "principales", "precio": 9500, "descripcion": "Con chorizo colorado y panceta" },
+    { "id": "R006", "nombre": "Tamales (x2)", "categoria": "principales", "precio": 6800 },
+    { "id": "R007", "nombre": "Humita en chala (x2)", "categoria": "principales", "precio": 6500, "tags": ["humita"] },
+    { "id": "R008", "nombre": "Milanesa napolitana", "categoria": "principales", "precio": 12500, "descripcion": "Con papas fritas", "tags": ["mila"] },
+    { "id": "R009", "nombre": "Bife de chorizo", "categoria": "principales", "precio": 16900, "descripcion": "Con ensalada o papas", "disponible": false, "tags": ["carne", "asado"] },
+    { "id": "R010", "nombre": "Pizza muzzarella", "categoria": "pizzas", "precio": 10500, "tags": ["muzza"] },
+    { "id": "R011", "nombre": "Pizza especial", "categoria": "pizzas", "precio": 13500, "descripcion": "Jamón, morrones y aceitunas" },
+    { "id": "R012", "nombre": "Pizza fugazzeta", "categoria": "pizzas", "precio": 12000, "tags": ["cebolla"] },
+    { "id": "R013", "nombre": "Gaseosa 1.5L", "categoria": "bebidas", "precio": 3800, "tags": ["coca", "sprite", "bebida"] },
+    { "id": "R014", "nombre": "Agua mineral 500ml", "categoria": "bebidas", "precio": 1800 },
+    { "id": "R015", "nombre": "Cerveza Salta 1L", "categoria": "bebidas", "precio": 4500, "tags": ["birra"] },
+    { "id": "R016", "nombre": "Vino torrontés (botella)", "categoria": "bebidas", "precio": 9800, "tags": ["vino blanco", "cafayate"] },
+    { "id": "R017", "nombre": "Flan casero con dulce", "categoria": "postres", "precio": 4200, "tags": ["dulce de leche"] },
+    { "id": "R018", "nombre": "Queso y dulce de cayote", "categoria": "postres", "precio": 4600, "tags": ["cayote", "nuez"] }
+  ]
+}

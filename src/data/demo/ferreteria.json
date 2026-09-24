@@ -1,0 +1,50 @@
+{
+  "info": {
+    "nombre": "Ferretería El Tornillo",
+    "direccion": "Av. San Martín 1250, Salta Capital",
+    "horarios": [
+      "Lunes a viernes: 8:00 a 13:00 y 16:30 a 20:30",
+      "Sábados: 8:30 a 13:30",
+      "Domingos y feriados: cerrado"
+    ],
+    "telefono": "387 421-0000",
+    "mapsUrl": "https://maps.google.com/?q=Av.+San+Martin+1250,+Salta"
+  },
+  "categorias": [
+    { "id": "manuales", "nombre": "Herramientas manuales" },
+    { "id": "electricas", "nombre": "Herramientas eléctricas" },
+    { "id": "fijaciones", "nombre": "Tornillos y fijaciones" },
+    { "id": "pintura", "nombre": "Pinturería" },
+    { "id": "electricidad", "nombre": "Electricidad" },
+    { "id": "plomeria", "nombre": "Plomería y sanitarios" }
+  ],
+  "productos": [
+    { "id": "F001", "nombre": "Martillo carpintero 16oz", "categoria": "manuales", "precio": 8500, "stock": 12 },
+    { "id": "F002", "nombre": "Destornillador plano 6mm", "categoria": "manuales", "precio": 2900, "stock": 30, "tags": ["desarmador"] },
+    { "id": "F003", "nombre": "Destornillador Phillips PH2", "categoria": "manuales", "precio": 3100, "stock": 25, "tags": ["desarmador", "estrella"] },
+    { "id": "F004", "nombre": "Pinza universal 8\"", "categoria": "manuales", "precio": 7600, "stock": 8, "tags": ["alicate"] },
+    { "id": "F005", "nombre": "Llave francesa 10\"", "categoria": "manuales", "precio": 9800, "stock": 0, "tags": ["ajustable"] },
+    { "id": "F006", "nombre": "Cinta métrica 5m", "categoria": "manuales", "precio": 4200, "stock": 20, "tags": ["metro"] },
+    { "id": "F007", "nombre": "Taladro percutor 650W", "categoria": "electricas", "precio": 68000, "stock": 4, "tags": ["agujereadora"] },
+    { "id": "F008", "nombre": "Atornillador inalámbrico 12V", "categoria": "electricas", "precio": 85000, "stock": 3, "tags": ["taladro", "bateria"] },
+    { "id": "F009", "nombre": "Amoladora angular 115mm", "categoria": "electricas", "precio": 59000, "stock": 5, "tags": ["amoladora", "disco"] },
+    { "id": "F010", "nombre": "Sierra caladora 400W", "categoria": "electricas", "precio": 64000, "stock": 0 },
+    { "id": "F011", "nombre": "Tornillo madera 4x40 (x100)", "categoria": "fijaciones", "precio": 3500, "stock": 60 },
+    { "id": "F012", "nombre": "Tornillo durlock T1 (x100)", "categoria": "fijaciones", "precio": 2800, "stock": 45, "tags": ["drywall", "placa"] },
+    { "id": "F013", "nombre": "Tarugo Fischer 8mm (x50)", "categoria": "fijaciones", "precio": 3900, "stock": 38, "tags": ["taco", "anclaje"] },
+    { "id": "F014", "nombre": "Clavo punta paris 2\" (1kg)", "categoria": "fijaciones", "precio": 4600, "stock": 22 },
+    { "id": "F015", "nombre": "Bulón con tuerca 1/4x2 (x20)", "categoria": "fijaciones", "precio": 5200, "stock": 15, "tags": ["tornillo", "perno"] },
+    { "id": "F016", "nombre": "Látex interior blanco 4L", "categoria": "pintura", "precio": 24500, "stock": 18, "tags": ["pintura", "pared"] },
+    { "id": "F017", "nombre": "Esmalte sintético negro 1L", "categoria": "pintura", "precio": 13800, "stock": 9, "tags": ["pintura", "metal", "madera"] },
+    { "id": "F018", "nombre": "Rodillo lana 22cm", "categoria": "pintura", "precio": 6400, "stock": 14 },
+    { "id": "F019", "nombre": "Pincel N°20", "categoria": "pintura", "precio": 2700, "stock": 26, "tags": ["brocha"] },
+    { "id": "F020", "nombre": "Cable unipolar 2.5mm (x metro)", "categoria": "electricidad", "precio": 950, "stock": 400, "tags": ["cable"] },
+    { "id": "F021", "nombre": "Lámpara LED 12W luz fría", "categoria": "electricidad", "precio": 2300, "stock": 80, "tags": ["foco", "bombita", "luz"] },
+    { "id": "F022", "nombre": "Toma corriente doble 10A", "categoria": "electricidad", "precio": 3400, "stock": 35, "tags": ["enchufe"] },
+    { "id": "F023", "nombre": "Cinta aisladora 20m", "categoria": "electricidad", "precio": 1500, "stock": 50, "tags": ["cinta"] },
+    { "id": "F024", "nombre": "Caño PVC 110mm (4m)", "categoria": "plomeria", "precio": 15800, "stock": 10, "tags": ["cano", "tubo", "desague"] },
+    { "id": "F025", "nombre": "Canilla monocomando cocina", "categoria": "plomeria", "precio": 42000, "stock": 2, "tags": ["grifo"] },
+    { "id": "F026", "nombre": "Cinta teflón 3/4", "categoria": "plomeria", "precio": 900, "stock": 70, "tags": ["cinta", "rosca"] },
+    { "id": "F027", "nombre": "Sellador silicona transparente", "categoria": "plomeria", "precio": 5600, "stock": 16, "tags": ["silicona", "sellador"] }
+  ]
+}
