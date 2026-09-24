@@ -1,4 +1,3 @@
-import { waitUntil } from "@vercel/functions";
 import { requireEnv } from "../src/lib/env.js";
 import { processWebhook } from "../src/lib/process.js";
 import { isValidSignature } from "../src/lib/signature.js";
@@ -37,7 +36,10 @@ export async function POST(request: Request): Promise<Response> {
     return new Response("Bad Request", { status: 400 });
   }
 
-  // Respondemos 200 enseguida (si no, Meta reintenta) y procesamos en segundo plano.
-  waitUntil(processWebhook(payload));
+  // Esperamos a que termine de procesar (incluye la respuesta al usuario) antes
+  // de responderle a Meta. Es un poco más lento que un waitUntil en segundo
+  // plano, pero evita que Vercel corte la función a mitad de camino en planes
+  // sin Fluid Compute. Meta tolera esta latencia sin reintentar.
+  await processWebhook(payload);
   return new Response("OK", { status: 200 });
 }
