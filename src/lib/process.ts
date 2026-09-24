@@ -37,7 +37,10 @@ async function handleValue(value: WebhookValue): Promise<void> {
         await sendReply(tenant, msg.from, reply);
       }
     } catch (err) {
-      console.error(`[webhook] Error en tenant "${tenant.handler.id}" msg ${msg.id}`, err);
+      console.error(
+        `[webhook] Error en tenant "${tenant.handler.id}" msg ${msg.id} from=${msg.from}`,
+        err,
+      );
     }
   }
 }
